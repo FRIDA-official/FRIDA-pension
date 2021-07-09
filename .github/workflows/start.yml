@@ -24,14 +24,16 @@ jobs:
             git commit -m "Add changes" --allow-empty
         - name: Push changes
           if: ${{github.ref}} == 'master'
-          uses: ad-m/github-push-action@master          
-          with:
+          run:
+            uses: ad-m/github-push-action@master          
+            with:
             github_token: ${{ secrets.GITHUB_TOKEN }}
             branch: gh-pages
             force: true            
           if: ${{github.ref}} != 'master'
-          uses: ad-m/github-push-action@master
-          with:
+          run:
+            uses: ad-m/github-push-action@master
+            with:
             github_token: ${{ secrets.GITHUB_TOKEN }}
             branch: {{github.ref}}
             force: true  

@@ -24,7 +24,6 @@ jobs:
             git commit -m "Add changes" --allow-empty
         - name: Push changes
           uses: ad-m/github-push-action@master
-          echo: github.ref
           if: ${{github.ref == refs/heads/master}}     
           with:
             github_token: ${{ secrets.GITHUB_TOKEN }}

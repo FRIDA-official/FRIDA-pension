@@ -22,20 +22,19 @@ jobs:
             git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git config --local user.name "github-actions[bot]"
             git commit -m "Add changes" --allow-empty
-        - name: Push changes
+        - name: Pushing changes to gh-pages
           if: ${{github.ref}} == 'master'
-          run:
-            uses: ad-m/github-push-action@master          
-            with:
+          uses: ad-m/github-push-action@master          
+          with:
             github_token: ${{ secrets.GITHUB_TOKEN }}
             branch: gh-pages
             force: true            
+        - name: Pushing changes to current branch
           if: ${{github.ref}} != 'master'
-          run:
-            uses: ad-m/github-push-action@master
-            with:
+          uses: ad-m/github-push-action@master
+          with:
             github_token: ${{ secrets.GITHUB_TOKEN }}
-            branch: {{github.ref}}
+            branch: ${{github.ref}}
             force: true  
  
         

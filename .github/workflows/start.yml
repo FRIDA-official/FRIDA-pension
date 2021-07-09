@@ -30,7 +30,6 @@ jobs:
             branch: gh-pages
             force: true            
         - name: Pushing changes to current branch
-          if: ! contains(github.ref,"master")
           uses: ad-m/github-push-action@master
           with:
             github_token: ${{ secrets.GITHUB_TOKEN }}

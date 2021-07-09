@@ -25,16 +25,16 @@ jobs:
         - name: Push changes
           uses: ad-m/github-push-action@master
           echo: github.ref
-          if: ${{github.ref == refs/heads/master}}
-            with:
-                github_token: ${{ secrets.GITHUB_TOKEN }}
-                branch: gh-pages
-                force: true            
-          if: ${{ {{github.ref}} != refs/heads/master}}
-            with:
-                github_token: ${{ secrets.GITHUB_TOKEN }}
-                branch: {{github.ref}}
-                force: true  
+          if: ${{github.ref == refs/heads/master}}     
+          with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            branch: gh-pages
+            force: true            
+          if: ${{ {{github.ref}} != refs/heads/master}
+          with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            branch: {{github.ref}}
+            force: true  
  
         
             

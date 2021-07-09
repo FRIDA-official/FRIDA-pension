@@ -9,8 +9,9 @@ jobs:
         - uses: actions/checkout@master
           with:
             persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
-            fetch-depth: 0 # otherwise, you will failed to push refs to dest repo   
-        - name: Generate HTML files
+            fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
+            ref: ${{ github.ref }}
+        - name: Generate HTML filess
           run: for filename in ./*.yaml; do redoc-cli bundle -o ./docs/${filename:2:$((${#filename})) - 7}.html $filename; done 
         - name: git status
           run: git status
@@ -23,10 +24,17 @@ jobs:
             git commit -m "Add changes" --allow-empty
         - name: Push changes
           uses: ad-m/github-push-action@master
-          with:
-            github_token: ${{ secrets.GITHUB_TOKEN }}
-            branch: gh-pages
-            force: true            
+          echo: github.ref
+          if: ${{github.ref == refs/heads/master}}
+              with:
+                github_token: ${{ secrets.GITHUB_TOKEN }}
+                branch: gh-pages
+                force: true            
+          if: ${{ {{github.ref}} != refs/heads/master}}
+              with:
+                github_token: ${{ secrets.GITHUB_TOKEN }}
+                branch: {{github.ref}}
+                force: true  
  
         
             

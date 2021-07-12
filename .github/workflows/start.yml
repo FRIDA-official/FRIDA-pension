@@ -19,8 +19,12 @@ jobs:
           run: for filename in ./*.yaml; do redoc-cli bundle -o ./docs/"${GITHUB_REF##*/}"/${filename:2:$((${#filename})) - 7}.html $filename; done 
         - name: git status
           run: git status
+        - name: Update README with current HTML sites 
+          run: for filename in ./docs/*.html; do echo "https://frida-official.github.io/FRIDA-pension/${filename:2:$((${#filename})) - 7}.html" > ./README.md; done  
         - name: Add files
           run: git add docs/*
+        - name: add README
+          run: git add README.md
         - name: Commit files
           run: |
             git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -32,8 +36,7 @@ jobs:
             github_token: ${{ secrets.GITHUB_TOKEN }}
             branch: gh-pages
             force: true
-        - name: Update README with current HTML sites 
-          run: for filename in ./docs/*.html; do echo "https://frida-official.github.io/FRIDA-pension/${filename:2:$((${#filename})) - 7}.html" > ./README.md; done  
+     
 
           
  

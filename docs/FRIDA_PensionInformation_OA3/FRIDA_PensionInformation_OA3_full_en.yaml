@@ -88,10 +88,10 @@ components:
     VisableContractsRequest:
       content:
         application/json: 
-        schema:
-          $ref: '#/components/schemas/VisableContractRequest'
-        description: 
-        required: true
+          schema:
+            $ref: '#/components/schemas/VisableContractsRequest'
+      description: Liste der Vertraege des Kunden
+      required: true
   schemas:
     VisableContractsRequest:
       type: object
@@ -102,10 +102,10 @@ components:
       type: object
       properties:
         list_contractsOfCustomer:
-          type: arrays 
+          type: array 
           items:
             type: string
-            description: contract of customer
+            description: contract of customer     
     Interest:
       type: object
       properties:

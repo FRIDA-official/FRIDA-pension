@@ -16,7 +16,7 @@ jobs:
           run: for filename in ./*.yaml; do redoc-cli bundle -o ./docs/${filename:2:$((${#filename})) - 7}.html $filename; done 
         - name: Generate HTML files for other branches
           if: "!(contains(github.ref,'master'))"
-          run: for filename in ./*.yaml; do redoc-cli bundle -o ./docs/${github_ref##*/}/${filename:2:$((${#filename})) - 7}.html $filename; done 
+          run: for filename in ./*.yaml; do redoc-cli bundle -o ./docs/"${GITHUB_REF##*/}"/${filename:2:$((${#filename})) - 7}.html $filename; done 
         - name: git status
           run: git status
         - name: Add files

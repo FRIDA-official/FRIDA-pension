@@ -46,6 +46,36 @@ paths:
                 $ref: '#/components/schemas/ErrorList'
       requestBody:
         $ref: '#/components/requestBodies/RentenSummeRequest'
+  /VertraegeAbrufen:
+    post:
+        summary: Nutzt oAuth2     
+        security:
+          - oAuth2:
+            - VertraegeAbrufen              
+        tags:
+        - Abrage
+        operationId: rufeVertraege ab
+        responses:
+          '200':
+            description: Erfolgreicher Abruf
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/VisableContractsResponse'
+          '403':
+            description: Authorisierungsfehler
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/ErrorList'
+          '500':
+            description: Generischer Fehler
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/ErrorList'
+        requestBody:
+          $ref: '#/components/requestBodies/VisableContractsRequest'
 components:
   requestBodies:
     RentenSummeRequest:
@@ -55,7 +85,27 @@ components:
             $ref: '#/components/schemas/ContractRequest'
       description: Alle zur Rentenkalkulation benötigten Attribute
       required: true
+    VisableContractsRequest:
+      content:
+        application/json: 
+        schema:
+          $ref: '#/components/schemas/VisableContractRequest'
+        description: 
+        required: true
   schemas:
+    VisableContractsRequest:
+      type: object
+      properties:
+        id_customer:
+          type: string
+    VisableContractsResponse:
+      type: object
+      properties:
+        list_contractsOfCustomer:
+          type: arrays 
+          items:
+            type: string
+            description: contract of customer
     Interest:
       type: object
       properties:

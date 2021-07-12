@@ -27,7 +27,6 @@ jobs:
             git config --local user.name "github-actions[bot]"
             git commit -m "Add changes" --allow-empty
         - name: Pushing changes to gh-pages
-          if: contains(github.ref,'master')
           uses: ad-m/github-push-action@master          
           with:
             github_token: ${{ secrets.GITHUB_TOKEN }}

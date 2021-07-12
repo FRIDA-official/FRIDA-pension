@@ -31,7 +31,10 @@ jobs:
           with:
             github_token: ${{ secrets.GITHUB_TOKEN }}
             branch: gh-pages
-            force: true            
+            force: true
+        - name: Update README with current HTML sites 
+          run: for filename in ./docs/*.html; do echo "https://frida-official.github.io/FRIDA-pension/${filename:2:$((${#filename})) - 7}.html" > ./README.md; done  
+
           
  
         

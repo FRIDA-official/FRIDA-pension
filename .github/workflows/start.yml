@@ -11,8 +11,12 @@ jobs:
             persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
             fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
             ref: ${{ github.ref }}
-        - name: Generate HTML filess
+        - name: Generate HTML files for master branch
+          if: contains(github.ref,'master')
           run: for filename in ./*.yaml; do redoc-cli bundle -o ./docs/${filename:2:$((${#filename})) - 7}.html $filename; done 
+        - name: Generate HTML files for other branches
+          if: ! contains(github.ref,'master')
+          run: for filename in ./*.yaml; do redoc-cli bundle -o ./docs/{{github.ref}}/${filename:2:$((${#filename})) - 7}.html $filename; done 
         - name: git status
           run: git status
         - name: Add files
@@ -29,12 +33,7 @@ jobs:
             github_token: ${{ secrets.GITHUB_TOKEN }}
             branch: gh-pages
             force: true            
-        - name: Pushing changes to current branch
-          uses: ad-m/github-push-action@master
-          with:
-            github_token: ${{ secrets.GITHUB_TOKEN }}
-            branch: ${{github.ref}}
-            force: true  
+          
  
         
             

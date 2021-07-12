@@ -2,7 +2,7 @@ name: start
 on: [push]
 jobs:
     generate_Github_pages_of_the_yaml_files:
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-latest
         container: 
             image: jonasknebel/resolver_for_yaml_dependencies:latest     
         steps:
@@ -16,7 +16,7 @@ jobs:
           run: for filename in ./*.yaml; do redoc-cli bundle -o ./docs/${filename:2:$((${#filename})) - 7}.html $filename; done 
         - name: Generate HTML files for other branches
           if: "!(contains(github.ref,'master'))"
-          run: for filename in ./*.yaml; do redoc-cli bundle -o ./docs/${github.ref##*/}/${filename:2:$((${#filename})) - 7}.html $filename; done 
+          run: for filename in ./*.yaml; do redoc-cli bundle -o ./docs/${github_ref##*/}/${filename:2:$((${#filename})) - 7}.html $filename; done 
         - name: git status
           run: git status
         - name: Add files

@@ -23,7 +23,7 @@ jobs:
           run: |
              > ./README.md
         - name: Update README with current HTML sites 
-          run: find ./docs/*.html -type f -maxdepth 2 | while read file; do printf https://frida-official.github.io/FRIDA-pension/${filename:2:$((${#filename})) - 7}.html" >> ./README.md $'\n'; done  
+          run: find ./docs/*.html -type f -maxdepth 2 | while read file; do printf https://frida-official.github.io/FRIDA-pension/${filename:2:$((${#filename})) - 7}.html" >> ./README.md $'\n'; end  
         - name: Add files
           run: git add docs/*
         - name: add README

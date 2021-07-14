@@ -16,7 +16,7 @@ jobs:
           run: |
             ls
             cd ./docs
-            mv -f /*/ /"${GITHUB_REF##*/}"/
+            mv -f * "${GITHUB_REF##*/}"
             ls
             echo "sad"
             cd "${GITHUB_REF##*/}"

@@ -17,14 +17,16 @@ jobs:
         - name: Generate HTML files for other branches
           if: "!(contains(github.ref,'master'))"
           run: for filename in ./*.yaml; do redoc-cli bundle -o ./docs/"${GITHUB_REF##*/}"/${filename:2:$((${#filename})) - 7}.html $filename; done 
+        - name: Add Resources to current branch folder
+          run: find ./docs -type f -maxdepth 3 -name ""
         - name: git status
           run: git status
         - name: Clear README 
           run: |
              > ./README.md
         - name: Update README with current HTML sites 
-          run: find ./docs -type f -maxdepth 3 -name "*.html" | 
-            while read filename; do echo "https://frida-official.github.io/FRIDA-pension/${filename:2:$((${#filename})) - 7}.html" >> ./README.md $'\n'; done  
+          run: find ./docs -type d -maxdepth 3 | 
+            while read filename; do mv filme "${GITHUB_REF##*/}"; done  
         - name: Add files
           run: git add docs/*
         - name: add README

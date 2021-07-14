@@ -53,7 +53,7 @@ paths:
           - oAuth2:
             - VertraegeAbrufen              
         tags:
-        - Abrage
+        - Abfrage
         operationId: rufeVertraege ab
         responses:
           '200':
@@ -96,16 +96,16 @@ components:
     VisableContractsRequest:
       type: object
       properties:
-        id_customer:
+        id_client:
           type: string
     VisableContractsResponse:
       type: object
       properties:
-        list_contractsOfCustomer:
+        list_contractsOfClient:
           type: array 
           items:
             type: string
-            description: contract of customer     
+            description: contract of client     
     Interest:
       type: object
       properties:

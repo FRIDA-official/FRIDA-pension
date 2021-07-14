@@ -14,7 +14,8 @@ jobs:
         - name: move dependencies
           if: "!(contains(github.ref,'master'))"
           run: |
-            cd docs
+            
+            cd ./docs
             mv -f * "${GITHUB_REF##*/}"
             ls
             echo "sad"

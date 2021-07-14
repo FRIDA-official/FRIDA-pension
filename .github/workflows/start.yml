@@ -17,6 +17,9 @@ jobs:
             ls
             cd docs
             mv * "${GITHUB_REF##*/}"
+            ls
+            cd "${GITHUB_REF##*/}"
+            ls
         - name: Generate HTML files for master branch
           if: contains(github.ref,'master')
           run: for filename in ./*.yaml; do redoc-cli bundle -o ./docs/${filename:2:$((${#filename})) - 7}.html $filename; done 

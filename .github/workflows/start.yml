@@ -14,7 +14,7 @@ jobs:
         - name: move dependencies
           if: "!(contains(github.ref,'master'))"
           run: | 
-           
+            mkdir -p docs/"${GITHUB_REF##*/}"
             ls
             find ./docs -maxdepth 1 | grep -v "${GITHUB_REF##*/}"| xargs -i mv {} "${GITHUB_REF##*/}"
         - name: Generate HTML files for master branch

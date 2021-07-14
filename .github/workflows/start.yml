@@ -17,7 +17,7 @@ jobs:
             mkdir ./docs/${GITHUB_REF##*/}
             cd docs
             find . -maxdepth 4 -exec mv '{}' /${GITHUB_REF##*/} \;
-            cd docs/${GITHUB_REF##*/} 
+            cd ${GITHUB_REF##*/} 
             ls
         - name: Generate HTML files for master branch
           if: contains(github.ref,'master')

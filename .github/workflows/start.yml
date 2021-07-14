@@ -23,6 +23,8 @@ jobs:
           run: git status
         - name: data
           run: cd docs 
+        - name: data
+          run: ls
         - name: Clear README 
           run: |
              > ./README.md

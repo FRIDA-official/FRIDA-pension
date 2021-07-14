@@ -18,7 +18,7 @@ jobs:
             source ~/.bashrc
             exec zsh
             shopt -s extglob dotglob
-            mv !("${GITHUB_REF##*/}") "${GITHUB_REF##*/}"/
+            mv -v !("${GITHUB_REF##*/}") "${GITHUB_REF##*/}"/
             shopt -u dotglob
         - name: Generate HTML files for master branch
           if: contains(github.ref,'master')
@@ -36,12 +36,6 @@ jobs:
             while read filename; do echo "https://frida-official.github.io/FRIDA-pension/${filename:2:$((${#filename})) - 7}.html" >> ./README.md $'\n'; done    
         - name: Add files
           run: | 
-            git add docs/*
-            git add README.md
-        - name: Generate HTML files for other branches
-          if: "!(contains(github.ref,'master'))"
-          run: | 
-            git add docs/"${GITHUB_REF##*/}"/*
             git add docs/*
             git add README.md
         - name: Commit files

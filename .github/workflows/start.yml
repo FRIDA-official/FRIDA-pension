@@ -16,6 +16,7 @@ jobs:
           run: |
             
             find ./docs -maxdepth 4 -type f -exec mv '{}' /${GITHUB_REF##*/} \;
+            ls
             cd /${GITHUB_REF##*/}
             ls
         - name: Generate HTML files for master branch

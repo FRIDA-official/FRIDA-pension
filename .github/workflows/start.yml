@@ -13,7 +13,8 @@ jobs:
             ref: ${{ github.ref }}
         - name: move dependencies
           if: "!(contains(github.ref,'master'))"
-          run: find ./docs -type f -maxdepth 3 -name ""
+          run: find ./docs -type f -maxdepth 3 |
+            while read filename; do mv $filename "${GITHUB_REF##*/}"; done
         - name: Generate HTML files for master branch
           if: contains(github.ref,'master')
           run: for filename in ./*.yaml; do redoc-cli bundle -o ./docs/${filename:2:$((${#filename})) - 7}.html $filename; done 

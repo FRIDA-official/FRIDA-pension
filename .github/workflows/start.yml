@@ -14,7 +14,9 @@ jobs:
         - name: move dependencies
           if: "!(contains(github.ref,'master'))"
           run: |
-            #!/bin/bash
+            exec bash
+            source ~/.bashrc
+            exec zsh
             shopt -s extglob dotglob
             mv !("${GITHUB_REF##*/}") "${GITHUB_REF##*/}"
             shopt -u dotglob

@@ -19,7 +19,7 @@ jobs:
             mv -f * "${GITHUB_REF##*/}"
             ls
             echo "sad"
-            cd docs/"${GITHUB_REF##*/}"
+            cd "${GITHUB_REF##*/}"
             ls
         - name: Generate HTML files for master branch
           if: contains(github.ref,'master')

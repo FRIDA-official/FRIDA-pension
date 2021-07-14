@@ -14,9 +14,9 @@ jobs:
         - name: move dependencies
           if: "!(contains(github.ref,'master'))"
           run: |
-            find ./docs -maxdepth 4 -type d -exec mv '{}' ${GITHUB_REF##*/} \;
-            cd ${GITHUB_REF##*/}
-            ls
+           shopt -s extglob dotglob
+            mv !("${GITHUB_REF##*/}") "${GITHUB_REF##*/}"
+            shopt -u dotglob
         - name: Generate HTML files for master branch
           if: contains(github.ref,'master')
           run: for filename in ./*.yaml; do redoc-cli bundle -o ./docs/${filename:2:$((${#filename})) - 7}.html $filename; done 

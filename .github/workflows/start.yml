@@ -15,6 +15,7 @@ jobs:
           run: |
             cd docs 
             ls
+            mkdir "${GITHUB_REF##*/}"
             mv /*/ "${GITHUB_REF##*/}"
         - name: Generate HTML files for master branch
           if: contains(github.ref,'master')

@@ -21,6 +21,8 @@ jobs:
           run: find ./docs -type f -maxdepth 3 -name ""
         - name: git status
           run: git status
+        - name: data
+          run: ls 
         - name: Clear README 
           run: |
              > ./README.md

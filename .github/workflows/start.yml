@@ -15,7 +15,7 @@ jobs:
           if: "!(contains(github.ref,'master'))"
           run: |
             cd docs
-            mv -v ./*/ ${GITHUB_REF##*/}/
+            mv -v ./*/ ${GITHUB_REF##*/}/FRIDA_PensionInformation_OA3/
             cd ${GITHUB_REF##*/}
             ls
         - name: Generate HTML files for master branch

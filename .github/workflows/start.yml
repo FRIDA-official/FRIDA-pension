@@ -15,7 +15,7 @@ jobs:
           if: "!(contains(github.ref,'master'))"
           run: |
             mkdir ./docs/${GITHUB_REF##*/}
-            find ./docs -maxdepth 4 -type f -exec mv '{}' /${GITHUB_REF##*/}\;
+            find ./docs -maxdepth 4 -type f -exec mv '{}' /${GITHUB_REF##*/} \;
             cd docs/${GITHUB_REF##*/} 
             ls
         - name: Generate HTML files for master branch

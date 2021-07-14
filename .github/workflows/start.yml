@@ -15,10 +15,7 @@ jobs:
           if: "!(contains(github.ref,'master'))"
           run: | 
             cd docs
-            lsof
-            mkdir -p "${GITHUB_REF##*/}"
-            ls
-            find . -maxdepth 1 | grep -v "${GITHUB_REF##*/}"| xargs -i mv {} "${GITHUB_REF##*/}"
+            mv * "${GITHUB_REF##*/}"
         - name: Generate HTML files for master branch
           if: contains(github.ref,'master')
           run: for filename in ./*.yaml; do redoc-cli bundle -o ./docs/${filename:2:$((${#filename})) - 7}.html $filename; done 

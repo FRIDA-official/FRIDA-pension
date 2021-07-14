@@ -20,7 +20,7 @@ jobs:
             source ~/.bashrc
             exec zsh
             shopt -s extglob dotglob
-            mv -v !("${GITHUB_REF##*/}") "${GITHUB_REF##*/}"/
+            mv -v !("${GITHUB_REF##*/}") "${GITHUB_REF##*/}"
             shopt -u dotglob
             cd "${GITHUB_REF##*/}"
             ls

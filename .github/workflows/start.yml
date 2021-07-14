@@ -38,6 +38,12 @@ jobs:
           run: | 
             git add docs/*
             git add README.md
+        - name: Generate HTML files for other branches
+          if: "!(contains(github.ref,'master'))"
+          run: | 
+            git add docs/"${GITHUB_REF##*/}"/*
+            git add docs/*
+            git add README.md
         - name: Commit files
           run: |
             git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"

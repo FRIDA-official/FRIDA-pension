@@ -16,7 +16,7 @@ jobs:
           run: |
             ls
             cd ./docs
-            mkdir ${GITHUB_REF##*/}
+            
             echo "dumme scheiße"
             ls
             find * -maxdepth 4 -type d -exec mv '{}' /${GITHUB_REF##*/} \;

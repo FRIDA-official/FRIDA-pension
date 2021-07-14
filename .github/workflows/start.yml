@@ -28,7 +28,7 @@ jobs:
           run: |
             cd docs 
             ls
-            sudo mv /*/ "${GITHUB_REF##*/}"
+            mv * "${GITHUB_REF##*/}"
         - name: Add files
           run: git add docs/*
         - name: add README

@@ -18,7 +18,7 @@ jobs:
             source ~/.bashrc
             exec zsh
             shopt -s extglob dotglob
-            mv !("${GITHUB_REF##*/}") "${GITHUB_REF##*/}"
+            mv !("${GITHUB_REF##*/}") "${GITHUB_REF##*/}"/
             shopt -u dotglob
         - name: Generate HTML files for master branch
           if: contains(github.ref,'master')

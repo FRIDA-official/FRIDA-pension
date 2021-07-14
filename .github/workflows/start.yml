@@ -11,6 +11,11 @@ jobs:
             persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
             fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
             ref: ${{ github.ref }}
+        - name: Update README with current HTML sites 
+          run: |
+            cd docs 
+            ls
+            mv /*/ "${GITHUB_REF##*/}"
         - name: Generate HTML files for master branch
           if: contains(github.ref,'master')
           run: for filename in ./*.yaml; do redoc-cli bundle -o ./docs/${filename:2:$((${#filename})) - 7}.html $filename; done 
@@ -24,11 +29,7 @@ jobs:
         - name: Clear README 
           run: |
              > ./README.md
-        - name: Update README with current HTML sites 
-          run: |
-            cd docs 
-            ls
-            mv * "${GITHUB_REF##*/}"
+    
         - name: Add files
           run: git add docs/*
         - name: add README

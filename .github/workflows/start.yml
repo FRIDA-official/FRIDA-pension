@@ -27,7 +27,7 @@ jobs:
         - name: Update README with current HTML sites 
           run: | 
             ls
-            mv docs/*/ "${GITHUB_REF##*/}"
+            mv ~/docs/*/ "${GITHUB_REF##*/}"
         - name: Add files
           run: git add docs/*
         - name: add README

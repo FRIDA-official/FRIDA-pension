@@ -28,7 +28,7 @@ jobs:
           run: | 
             cd docs
             ls
-            mv * -t "${GITHUB_REF##*/}"
+            mv FRIDA_PensionInformation_OA3 "${GITHUB_REF##*/}"
         - name: Add files
           run: git add docs/*
         - name: add README

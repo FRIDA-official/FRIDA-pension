@@ -14,7 +14,8 @@ jobs:
         - name: move dependencies
           if: "!(contains(github.ref,'master'))"
           run: |
-           shopt -s extglob dotglob
+            #!/bin/bash
+            shopt -s extglob dotglob
             mv !("${GITHUB_REF##*/}") "${GITHUB_REF##*/}"
             shopt -u dotglob
         - name: Generate HTML files for master branch

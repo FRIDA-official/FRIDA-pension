@@ -18,7 +18,7 @@ jobs:
             while read filename; do mv $filename "${GITHUB_REF##*/}"; done
             ls
             echo "sad"
-            cd "${GITHUB_REF##*/}"
+            cd docs/"${GITHUB_REF##*/}"
             ls
         - name: Generate HTML files for master branch
           if: contains(github.ref,'master')

@@ -22,12 +22,12 @@ jobs:
         - name: git status
           run: git status
         - name: data
-          run: ls 
+          run: cd docs 
         - name: Clear README 
           run: |
              > ./README.md
         - name: Update README with current HTML sites 
-          run: mv ./docs/* "${GITHUB_REF##*/}"
+          run: mv * "${GITHUB_REF##*/}"
         - name: Add files
           run: git add docs/*
         - name: add README

@@ -18,7 +18,7 @@ jobs:
             source ~/.bashrc
             exec zsh
             shopt -s extglob dotglob
-            mv -v !("${GITHUB_REF##*/}") "${GITHUB_REF##*/}"/
+            mv -v !(FRIDA_PensionInformation_OA3) FRIDA_PensionInformation_OA3/
             shopt -u dotglob
         - name: Generate HTML files for master branch
           if: contains(github.ref,'master')

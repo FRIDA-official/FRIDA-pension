@@ -15,14 +15,8 @@ jobs:
           if: "!(contains(github.ref,'master'))"
           run: |
             cd docs
-            ls
-            exec bash
-            source ~/.bashrc
-            exec zsh
-            shopt -s extglob dotglob
-            mv -v !("${GITHUB_REF##*/}") "${GITHUB_REF##*/}"
-            shopt -u dotglob
-            cd "${GITHUB_REF##*/}"
+            mv ./*/ ${GITHUB_REF##*/}
+            cd ${GITHUB_REF##*/}
             ls
         - name: Generate HTML files for master branch
           if: contains(github.ref,'master')

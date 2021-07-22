@@ -272,7 +272,7 @@ components:
           $ref: '#/components/schemas/Amount'
         flag_child_allowances:
           type: boolean
-        childs:
+        children:
           type: array
           items: 
             $ref: '#/components/schemas/Child'
@@ -280,11 +280,11 @@ components:
           oneOf:
             - $ref: '#/components/schemas/PIAClass'
             - enum:
-                - id: 'CRK-1'
-                - id: 'CRK-2'
-                - id: 'CRK-3'
-                - id: 'CRK-4'
-                - id: 'CRK-5'
+                - CRK1
+                - CRK2
+                - CRK3
+                - CRK4
+                - CRK5
         factor_pension_if_not_converted_into_oldage_pension:
           $ref: '#/components/schemas/Factor'
         amount_riester_credit_payments_and_allowances_as_of_today:

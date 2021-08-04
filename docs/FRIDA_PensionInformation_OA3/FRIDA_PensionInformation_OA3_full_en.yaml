@@ -75,6 +75,7 @@ components:
           type: number
           format: double
         currency:
+          description: According ISO 4217 (https://de.wikipedia.org/wiki/ISO_4217)
           type: string
           format: string
           example: 'EUR'

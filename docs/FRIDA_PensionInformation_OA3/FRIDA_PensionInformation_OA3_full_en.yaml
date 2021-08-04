@@ -177,7 +177,7 @@ components:
           $ref: '#/components/schemas/Date'
         interest_total_return_current:
           $ref: '#/components/schemas/Interest'
-        amount_fund_capital_ with_fund_growth_by_percent:
+        amount_fund_capital_with_fund_growth_by_percent:
           $ref: '#/components/schemas/Amount' 
         amount_fund_capital_with_growth_at_start_of_retirement_based_on_current_contributions:
           $ref: '#/components/schemas/Amount'

@@ -133,8 +133,6 @@ components:
         
     ContractCore:
       type: object
-      required: 
-        - productId
       properties:
         productList:
           type: array

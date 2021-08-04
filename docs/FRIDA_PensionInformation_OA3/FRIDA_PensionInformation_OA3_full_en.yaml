@@ -82,6 +82,9 @@ components:
       type: string
       format: date
       description: Date in YYYY-DD-MM Format
+    Percent:
+      type: number
+      format: double
     ErrorList:
       type: object
       required:
@@ -165,8 +168,7 @@ components:
                 - id: '3'
                   full_name_de: 'Basisrente - klassisch'
         percent_profit_participation_current:
-          type: number
-          format: double
+          $ref: '#/components/schemas/Percent'
         amount_payments_contribution:
           $ref: '#/components/schemas/Amount'        
         date_notification_status_contract:
@@ -182,8 +184,7 @@ components:
         amount_fund_capital_with_growth_at_start_of_retirement_without_further_contributions:
           $ref: '#/components/schemas/Amount'
         percent_guaranteed:
-          type: number
-          format: double
+          $ref: '#/components/schemas/Percent'
         amount_guarantee_capital_start_of_retirement:
           $ref: '#/components/schemas/Amount' 
         amount_guaranteed_capital_as_of_today:

@@ -1,20 +1,14 @@
 openapi: 3.0.1
 info:
   title: FRIDA PensionSerivce
-  description: base spec without dependencies
+  description: This file describes the pension service and its needed APIs
   termsOfService: 'https://github.com/FRIDA-official'
   contact:
     email: anton.rott@accenture.com
-  license:
-    name: Apache 2.0
-    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
-  version: 0.0.1
+  version: '1.1'
 externalDocs:
-  description: Hier folgt noch ein Verweis auf die externe Doku
-  url: 'http://swagger.io'
-  
-servers:
-  - url: 'https://test-api-impl-backend-jaxrs.herokuapp.com/v2'
+  description: External documentation
+  url: 'https://frida-official.github.io/FRIDA-pension/docs/FRIDA_PensionInformation_OA3_en.html'
 paths:
   /RentenKalkulation:
     post:
@@ -46,6 +40,36 @@ paths:
                 $ref: '#/components/schemas/ErrorList'
       requestBody:
         $ref: '#/components/requestBodies/RentenSummeRequest'
+  /VertraegeAbrufen:
+    post:
+        summary: Nutzt oAuth2     
+        security:
+          - oAuth2:
+            - VertraegeAbrufen              
+        tags:
+        - Abfrage
+        operationId: rufeVertraege ab
+        responses:
+          '200':
+            description: Erfolgreicher Abruf
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/VisableContractsResponse'
+          '403':
+            description: Authorisierungsfehler
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/ErrorList'
+          '500':
+            description: Generischer Fehler
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/ErrorList'
+        requestBody:
+          $ref: '#/components/requestBodies/VisableContractsRequest'
 components:
   requestBodies:
     RentenSummeRequest:
@@ -55,7 +79,27 @@ components:
             $ref: '#/components/schemas/ContractRequest'
       description: Alle zur Rentenkalkulation benötigten Attribute
       required: true
+    VisableContractsRequest:
+      content:
+        application/json: 
+          schema:
+            $ref: '#/components/schemas/VisableContractsRequest'
+      description: Liste der Vertraege des Kunden
+      required: true
   schemas:
+    VisableContractsRequest:
+      type: object
+      properties:
+        id_client:
+          type: string
+    VisableContractsResponse:
+      type: object
+      properties:
+        list_contractsOfClient:
+          type: array 
+          items:
+            type: string
+            description: contract of client     
     Interest:
       type: object
       properties:
@@ -222,7 +266,7 @@ components:
           $ref: '#/components/schemas/Amount'
         flag_child_allowances:
           type: boolean
-        childs:
+        children:
           type: array
           items: 
             $ref: '#/components/schemas/Child'
@@ -230,11 +274,11 @@ components:
           oneOf:
             - $ref: '#/components/schemas/PIAClass'
             - enum:
-                - id: 'CRK-1'
-                - id: 'CRK-2'
-                - id: 'CRK-3'
-                - id: 'CRK-4'
-                - id: 'CRK-5'
+                - CRK1
+                - CRK2
+                - CRK3
+                - CRK4
+                - CRK5
         factor_pension_if_not_converted_into_oldage_pension:
           $ref: '#/components/schemas/Factor'
         amount_riester_credit_payments_and_allowances_as_of_today:

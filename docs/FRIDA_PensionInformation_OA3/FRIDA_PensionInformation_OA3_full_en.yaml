@@ -1,61 +1,99 @@
 openapi: 3.0.1
 info:
   title: FRIDA PensionSerivce
-  description: base spec without dependencies
+  description: This spec describes the pension service and its needed APIs
   termsOfService: 'https://github.com/FRIDA-official'
   contact:
     email: anton.rott@accenture.com
-  license:
-    name: Apache 2.0
-    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
-  version: 0.0.1
+  version: '1.1'
 externalDocs:
-  description: Hier folgt noch ein Verweis auf die externe Doku
-  url: 'http://swagger.io'
-  
-servers:
-  - url: 'https://test-api-impl-backend-jaxrs.herokuapp.com/v2'
+  description: External documentation
+  url: 'https://frida-official.github.io/FRIDA-pension/docs/FRIDA_PensionInformation_OA3_en.html'
 paths:
-  /RentenKalkulation:
+  /ContractDetails:
     post:
-      summary: Nutzt oAuth2     
+      summary: Query the details for a specific contract     
       security:
         - oAuth2:
-          - RenteKalkulieren              
-      tags:
-      - Kalkulierung
-      operationId: berechneRente
+          - ContractDetails              
       responses:
         '200':
-          description: Erfolgreiche Berechnung
+          description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ContractResponse'
+                $ref: '#/components/schemas/ContractDetailsResponse'
         '403':
-          description: Authorisierungsfehler
+          description: Authorization error
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorList'
         '500':
-          description: Generischer Fehler
+          description: Generic Error
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorList'
       requestBody:
-        $ref: '#/components/requestBodies/RentenSummeRequest'
+        $ref: '#/components/requestBodies/ContractDetailsRequest'
+  /Contracts:
+    post:
+        summary: Query all visible contracts defined in the user portal    
+        security:
+          - oAuth2:
+            - Contracts
+        responses:
+          '200':
+            description: Success
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/VisableContractsResponse'
+          '403':
+            description: Authorization error
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/ErrorList'
+          '500':
+            description: Unexpected error
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/ErrorList'
+        requestBody:
+          $ref: '#/components/requestBodies/VisableContractsRequest'
 components:
   requestBodies:
-    RentenSummeRequest:
+    ContractDetailsRequest:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ContractRequest'
-      description: Alle zur Rentenkalkulation benötigten Attribute
+            $ref: '#/components/schemas/ContractDetailsRequest'
+      description: Fetch contract details for a specific contract
+      required: true
+    VisableContractsRequest:
+      content:
+        application/json: 
+          schema:
+            $ref: '#/components/schemas/VisableContractsRequest'
+      description: Here, we use the user id of the specific user to know which contracts to fetch
       required: true
   schemas:
+    VisableContractsRequest:
+      type: object
+      properties:
+        id_client:
+          type: string
+    VisableContractsResponse:
+      type: object
+      properties:
+        list_contractsOfClient:
+          type: array 
+          items:
+            type: string
+            description: contract of client     
     Interest:
       type: object
       properties:
@@ -108,14 +146,14 @@ components:
               meta:
                 type: object
                 description: Optional additional data for specific error types
-    ContractRequest:
+    ContractDetailsRequest:
       type: object
       properties:
         contractNumber:
           type: string
           format: string
           description: Unique Identifier for contract
-    ContractResponse:
+    ContractDetailsResponse:
       type: object
       properties:
         contractList:
@@ -222,7 +260,7 @@ components:
           $ref: '#/components/schemas/Amount'
         flag_child_allowances:
           type: boolean
-        childs:
+        children:
           type: array
           items: 
             $ref: '#/components/schemas/Child'
@@ -230,11 +268,11 @@ components:
           oneOf:
             - $ref: '#/components/schemas/PIAClass'
             - enum:
-                - id: 'CRK-1'
-                - id: 'CRK-2'
-                - id: 'CRK-3'
-                - id: 'CRK-4'
-                - id: 'CRK-5'
+                - CRK1
+                - CRK2
+                - CRK3
+                - CRK4
+                - CRK5
         factor_pension_if_not_converted_into_oldage_pension:
           $ref: '#/components/schemas/Factor'
         amount_riester_credit_payments_and_allowances_as_of_today:
@@ -269,11 +307,13 @@ components:
         implicit:
           authorizationUrl: 'https://frida-demo.okta.com/oauth2/default/v1/authorize?nonce=kdkdkl'
           scopes:
-            RenteKalkulieren: Read contract information
+            Contracts: Read all visible contracts
+            ContractDetails: Read contract details
             openid: OpenId subject
         authorizationCode:
           authorizationUrl: 'https://frida-demo.okta.com/oauth2/default/v1/authorize?nonce=kdkdkl'
           tokenUrl: 'https://frida-demo.okta.com/oauth2/default/v1/token?nonce=kdkdkl'
           scopes:
-            RenteKalkulieren: Read contract information
+            Contracts: Read all visible contracts
+            ContractDetails: Read contract details
             openid: OpenId subject

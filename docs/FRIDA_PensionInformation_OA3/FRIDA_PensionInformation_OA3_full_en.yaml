@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: FRIDA PensionSerivce
-  description: This file describes the pension service and its needed APIs
+  description: This spec describes the pension service and its needed APIs
   termsOfService: 'https://github.com/FRIDA-official'
   contact:
     email: anton.rott@accenture.com
@@ -10,36 +10,33 @@ externalDocs:
   description: External documentation
   url: 'https://frida-official.github.io/FRIDA-pension/docs/FRIDA_PensionInformation_OA3_en.html'
 paths:
-  /RentenKalkulation:
+  /ContractDetails:
     post:
-      summary: Nutzt oAuth2     
+      summary: Query the details for a specific contract     
       security:
         - oAuth2:
-          - RenteKalkulieren              
-      tags:
-      - Kalkulierung
-      operationId: berechneRente
+          - ContractDetails              
       responses:
         '200':
-          description: Erfolgreiche Berechnung
+          description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ContractResponse'
+                $ref: '#/components/schemas/ContractDetailsResponse'
         '403':
-          description: Authorisierungsfehler
+          description: Authorization error
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorList'
         '500':
-          description: Generischer Fehler
+          description: Generic Error
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorList'
       requestBody:
-        $ref: '#/components/requestBodies/RentenSummeRequest'
+        $ref: '#/components/requestBodies/ContractDetailsRequest'
   /Contracts:
     post:
         summary: Query all visible contracts defined in the user portal    
@@ -69,12 +66,12 @@ paths:
           $ref: '#/components/requestBodies/VisableContractsRequest'
 components:
   requestBodies:
-    RentenSummeRequest:
+    ContractDetailsRequest:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ContractRequest'
-      description: Alle zur Rentenkalkulation benötigten Attribute
+            $ref: '#/components/schemas/ContractDetailsRequest'
+      description: Fetch contract details for a specific contract
       required: true
     VisableContractsRequest:
       content:
@@ -149,14 +146,14 @@ components:
               meta:
                 type: object
                 description: Optional additional data for specific error types
-    ContractRequest:
+    ContractDetailsRequest:
       type: object
       properties:
         contractNumber:
           type: string
           format: string
           description: Unique Identifier for contract
-    ContractResponse:
+    ContractDetailsResponse:
       type: object
       properties:
         contractList:

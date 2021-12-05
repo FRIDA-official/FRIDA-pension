@@ -40,30 +40,27 @@ paths:
                 $ref: '#/components/schemas/ErrorList'
       requestBody:
         $ref: '#/components/requestBodies/RentenSummeRequest'
-  /VertraegeAbrufen:
+  /Contracts:
     post:
-        summary: Nutzt oAuth2     
+        summary: Query all visible contracts defined in the user portal    
         security:
           - oAuth2:
-            - VertraegeAbrufen              
-        tags:
-        - Abfrage
-        operationId: rufeVertraege ab
+            - Contracts
         responses:
           '200':
-            description: Erfolgreicher Abruf
+            description: Success
             content:
               application/json:
                 schema:
                   $ref: '#/components/schemas/VisableContractsResponse'
           '403':
-            description: Authorisierungsfehler
+            description: Authorization error
             content:
               application/json:
                 schema:
                   $ref: '#/components/schemas/ErrorList'
           '500':
-            description: Generischer Fehler
+            description: Unexpected error
             content:
               application/json:
                 schema:
@@ -84,7 +81,7 @@ components:
         application/json: 
           schema:
             $ref: '#/components/schemas/VisableContractsRequest'
-      description: Liste der Vertraege des Kunden
+      description: Here, we use the user id of the specific user to know which contracts to fetch
       required: true
   schemas:
     VisableContractsRequest:

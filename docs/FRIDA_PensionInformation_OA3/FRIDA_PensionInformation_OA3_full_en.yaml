@@ -171,7 +171,7 @@ components:
     ContractDetails:
       type: object
       properties:
-        Contract:
+        contract:
           type: object
           properties:
             type_of_insurance:
@@ -185,11 +185,58 @@ components:
               $ref: '#/components/schemas/Date'
             date_start_insurance_contract:
               $ref: '#/components/schemas/Date'
-            Product:
+            product:
               type: object
               properties:
-                Element:
+                product_name:
+                  type: string
+                product_layer:
+                  type: string
+                  description: 'Single digit number, ranging from 0-9, e.g. "3"'
+                allocation_company_pension_plan:
+                  type: string
+                tax_law_specification:
+                  type: string
+                employer_as_policyholder:
+                  type: boolean
+                premium_payment_method:
+                  type: string
+                  enum:
+                    - '12'
+                    - '4'
+                    - '6'
+                    - '1'
+                    - 'E'
+                premium_payment_amount:
+                  $ref: '#/components/schemas/Amount'
+                premium_employer_payment_included_current:
+                  $ref: '#/components/schemas/Amount'
+                increase_premium:
                   type: object
+                  properties:
+                    dynamically:
+                      type: boolean
+                    rate:
+                      $ref: '#/components/schemas/Factor'
+                    interval:
+                      $ref: '#/components/schemas/Date'
+                id_chance_risk_category:
+                  type: string
+                  enum:
+                    - CRK1
+                    - CRK2
+                    - CRK3
+                    - CRK4
+                    - CRK5
+                children:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      date_of_birth:
+                        $ref: '#/components/schemas/Date'
+            element:
+              type: object
     ContractCore:
       type: object
       required: 

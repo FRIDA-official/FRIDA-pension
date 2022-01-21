@@ -168,7 +168,17 @@ components:
           format: string
         currentPensionAssets:
           $ref: '#/components/schemas/Amount'
-        
+    ContractDetails:
+      type: object
+      properties:
+        Contract:
+          type: object
+          properties:
+            Product:
+              type: object
+              properties:
+                Element:
+                  type: object
     ContractCore:
       type: object
       required: 

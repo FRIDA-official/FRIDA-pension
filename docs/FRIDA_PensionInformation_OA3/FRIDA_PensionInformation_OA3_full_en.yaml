@@ -172,7 +172,6 @@ components:
       type: object
       properties:
         contract:
-          type: object
           properties:
             type_of_insurance:
               type: string
@@ -236,7 +235,112 @@ components:
                       date_of_birth:
                         $ref: '#/components/schemas/Date'
             element:
-              type: object
+              type: array
+              items:
+                type: object
+                properties:
+                  date_of_retirement_contract:
+                    $ref: '#/components/schemas/Date'
+                  amount_capital_retirement_guaranteed:
+                    type: object
+                    properties:
+                      current_premium:
+                        $ref: '#/components/schemas/Amount'
+                      as_of_today:
+                        $ref: '#/components/schemas/Amount'
+                      without_further_premium:
+                        $ref: '#/components/schemas/Amount'
+                  factor_pension_guaranteed:
+                    $ref: '#/components/schemas/Factor'
+                  interest_return_guaranteed:
+                    $ref: '#/components/schemas/Interest'
+                  amount_capital_extrapolation_guaranteed:
+                    $ref: '#/components/schemas/Amount'
+                  amount_pension_retirement_guaranteed:
+                    type: object
+                    properties:
+                      current_premium:
+                        $ref: '#/components/schemas/Amount'
+                      without_further_premium:
+                        $ref: '#/components/schemas/Amount'
+                      current_premium__and_government_subsidies:
+                        $ref: '#/components/schemas/Amount'
+                      without_further_premium__and_government_subsidies:
+                        $ref: '#/components/schemas/Amount'
+                  pension_bereaved_duration_guarateed:
+                    $ref: '#/components/schemas/Date'
+                  amount_capital_current:
+                    $ref: '#/components/schemas/Amount'
+                  amount_fund_capital_current:
+                    $ref: '#/components/schemas/Amount'
+                  amount_capital_extrapolation_current:
+                    $ref: '#/components/schemas/Amount'
+                  amount_surplus_participation_current:
+                    $ref: '#/components/schemas/Amount'
+                  buyback_value_with_cancellation_fees:
+                    $ref: '#/components/schemas/Amount'
+                  interest_return_current:
+                    $ref: '#/components/schemas/Interest'
+                  amount_premium_payments_total:
+                    $ref: '#/components/schemas/Amount'
+                  interest_basis_for_extrapolation:
+                    $ref: '#/components/schemas/Interest'
+                  amount_capital_assuming_fund_performance:
+                    type: object
+                    properties:
+                      current:
+                        $ref: '#/components/schemas/Amount'
+                      retirement_current_premium:
+                        $ref: '#/components/schemas/Amount'
+                      retirement_without_further_premium:
+                        $ref: '#/components/schemas/Amount'
+                  amount_fund_ongoing_charges_annually:
+                    $ref: '#/components/schemas/Amount'
+                  percent_guaranteed:
+                    type: number
+                    format: double
+                  factor_pension_current:
+                    $ref: '#/components/schemas/Factor'
+                  amount_pension_as_of_today:
+                    $ref: '#/components/schemas/Amount'
+                  amount_pension_assuming_surplus_participation_retirement:
+                    type: object
+                    properties:
+                      current_premium:
+                        $ref: '#/components/schemas/Amount'
+                      amount_pension_assuming_surplus_participation_retirement_without_further_premium:
+                        $ref: '#/components/schemas/Amount'
+                      current_premium_and_government_subsidies:
+                        $ref: '#/components/schemas/Amount'
+                      without_further_premium_and_government_subsidies:
+                        $ref: '#/components/schemas/Amount'
+                      amount_pension_assuming_fund_performance:
+                        $ref: '#/components/schemas/Amount'
+                  amount_pension_capital_goverment_subsidies_included_current:
+                    $ref: '#/components/schemas/Amount'
+                  goverment_subsidies_in_extrapolation_included:
+                    type: boolean
+                  amount_premium_full_goverment_subsidies:
+                    type: boolean
+                  indirectly_eligible_goverment_subsidies:
+                    type: boolean
+                  amount_government_subsidies_annual:
+                    $ref: '#/components/schemas/Amount'
+                  amount_government_subsidies_total:
+                    $ref: '#/components/schemas/Amount'
+                  occupational_disability:
+                    type: object
+                    properties:
+                      waive_premium:
+                        type: boolean
+                      amount_pension_guaranteed:
+                        $ref: '#/components/schemas/Amount'
+                      pension_duration:
+                        $ref: '#/components/schemas/Date'
+                  amount_capital_coverage_death_accidental:
+                    $ref: '#/components/schemas/Amount'
+                  amount_capital_coverage_death:
+                    $ref: '#/components/schemas/Amount'
     ContractCore:
       type: object
       required: 

@@ -203,10 +203,10 @@ components:
                   premium_payment_method:
                     type: string
                     enum:
-                      - '12'
+                      - '1'
                       - '4'
                       - '6'
-                      - '1'
+                      - '12'
                       - 'E'
                   premium_payment_amount:
                     $ref: '#/components/schemas/Amount'
@@ -217,9 +217,15 @@ components:
                     properties:
                       dynamically:
                         type: boolean
+                      interval:
+                        type: string
+                        enum:
+                          - annual
+                          - biennial
+                          - triennial
                       rate:
                         $ref: '#/components/schemas/Factor'
-                      interval:
+                      last_assumptipon:
                         $ref: '#/components/schemas/Date'
                   id_chance_risk_category:
                     type: string
@@ -310,13 +316,13 @@ components:
                           properties:
                             current_premium:
                               $ref: '#/components/schemas/Amount'
-                            amount_pension_assuming_surplus_participation_retirement_without_further_premium:
+                            without_further_premium:
                               $ref: '#/components/schemas/Amount'
                             current_premium_and_government_subsidies:
                               $ref: '#/components/schemas/Amount'
                             without_further_premium_and_government_subsidies:
                               $ref: '#/components/schemas/Amount'
-                            amount_pension_assuming_fund_performance:
+                        amount_pension_assuming_fund_performance:
                               $ref: '#/components/schemas/Amount'
                         amount_pension_capital_goverment_subsidies_included_current:
                           $ref: '#/components/schemas/Amount'

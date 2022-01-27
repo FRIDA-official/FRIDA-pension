@@ -172,6 +172,8 @@ components:
                 - Pflegeversicherung
                 - Gesetzliche Rentenversicherung
                 - Privat
+                - Betriebliche Rentenversicherung
+                - Kapitallebensversicherung
             date_notification_status: 
               $ref: '#/components/schemas/Date'
             date_start_insurance_contract:
@@ -227,8 +229,9 @@ components:
                       - CRK3
                       - CRK4
                       - CRK5
-                  children:
+                  eligible_children:
                     type: array
+                    description: Enter eligable childrens birthdates in this array. Leave empty, if there are none
                     items:
                       type: object
                       properties:
@@ -316,11 +319,11 @@ components:
                               $ref: '#/components/schemas/Amount'
                         amount_pension_assuming_fund_performance:
                               $ref: '#/components/schemas/Amount'
-                        amount_pension_capital_goverment_subsidies_included_current:
+                        amount_capital_goverment_subsidies_included_current:
                           $ref: '#/components/schemas/Amount'
                         goverment_subsidies_in_extrapolation_included:
                           type: boolean
-                        amount_premium_full_goverment_subsidies:
+                        full_utilizaiton_goverment_subsidies:
                           type: boolean
                         indirectly_eligible_goverment_subsidies:
                           type: boolean

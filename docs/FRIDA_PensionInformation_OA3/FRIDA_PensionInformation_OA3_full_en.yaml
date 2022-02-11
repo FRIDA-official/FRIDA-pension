@@ -91,13 +91,13 @@ components:
     VisibleContractsResponse:
       type: object
       properties:
-        contracts_of_client_list:
+        contract_ids_of_client:
           type: array
           items:
             type: string
-            description: contract of client
+            description: contract id of client
       required:
-        - contracts_of_client_list
+        - contract_ids_of_client
     Interest:
       type: object
       properties:
@@ -163,12 +163,12 @@ components:
     ContractDetailsResponse:
       type: object
       properties:
-        contract_list:
+        contracts:
           type: array
           items:
             $ref: '#/components/schemas/ContractDetails'
       required:
-        - contract_list
+        - contracts
     ContractDetails:
       type: object
       properties:
@@ -187,7 +187,7 @@ components:
               $ref: '#/components/schemas/Date'
             date_start_insurance_contract:
               $ref: '#/components/schemas/Date'
-            product:
+            products:
               type: array
               items:
                 type: object
@@ -247,7 +247,7 @@ components:
                       properties:
                         date_of_birth:
                           $ref: '#/components/schemas/Date'
-                  element:
+                  elements:
                     type: array
                     items:
                       type: object

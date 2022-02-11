@@ -154,12 +154,12 @@ components:
     ContractDetailsRequest:
       type: object
       properties:
-        contract_number:
+        contract_id:
           type: string
           format: string
           description: Unique Identifier for contract
       required:
-        - contract_number
+        - contract_id
     ContractDetailsResponse:
       type: object
       properties:

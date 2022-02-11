@@ -12,10 +12,10 @@ externalDocs:
 paths:
   /ContractDetails:
     post:
-      summary: Query the details for a specific contract     
+      summary: Query the details for a specific contract
       security:
         - oAuth2:
-          - ContractDetails              
+          - ContractDetails
       responses:
         '200':
           description: Success
@@ -39,7 +39,7 @@ paths:
         $ref: '#/components/requestBodies/ContractDetailsRequest'
   /Contracts:
     post:
-        summary: Query all visible contracts defined in the user portal    
+        summary: Query all visible contracts defined in the user portal
         security:
           - oAuth2:
             - Contracts
@@ -75,7 +75,7 @@ components:
       required: true
     VisableContractsRequest:
       content:
-        application/json: 
+        application/json:
           schema:
             $ref: '#/components/schemas/VisableContractsRequest'
       description: Here, we use the user id of the specific user to know which contracts to fetch
@@ -90,10 +90,10 @@ components:
       type: object
       properties:
         list_contractsOfClient:
-          type: array 
+          type: array
           items:
             type: string
-            description: contract of client     
+            description: contract of client
     Interest:
       type: object
       properties:
@@ -174,7 +174,7 @@ components:
                 - Private Rentenversicherung
                 - Betriebliche Rentenversicherung
                 - Kapitallebensversicherung
-            date_notification_status: 
+            date_notification_status:
               $ref: '#/components/schemas/Date'
             date_start_insurance_contract:
               $ref: '#/components/schemas/Date'

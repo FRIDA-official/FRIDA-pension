@@ -196,6 +196,7 @@ components:
                   product_layer:
                     type: string
                     description: 'Single digit number, ranging from 0-9, e.g. "3"'
+                    pattern: '^[0-9]$'
                   allocation_company_pension_plan:
                     type: string
                   tax_law_specification:

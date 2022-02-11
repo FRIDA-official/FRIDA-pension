@@ -91,13 +91,13 @@ components:
     VisibleContractsResponse:
       type: object
       properties:
-        list_contractsOfClient:
+        contracts_of_client_list:
           type: array
           items:
             type: string
             description: contract of client
       required:
-        - list_contractsOfClient
+        - contracts_of_client_list
     Interest:
       type: object
       properties:
@@ -153,21 +153,21 @@ components:
     ContractDetailsRequest:
       type: object
       properties:
-        contractNumber:
+        contract_number:
           type: string
           format: string
           description: Unique Identifier for contract
       required:
-        - contractNumber
+        - contract_number
     ContractDetailsResponse:
       type: object
       properties:
-        contractList:
+        contract_list:
           type: array
           items:
             $ref: '#/components/schemas/ContractDetails'
       required:
-        - contractList
+        - contract_list
     ContractDetails:
       type: object
       properties:
@@ -274,9 +274,9 @@ components:
                               $ref: '#/components/schemas/Amount'
                             without_further_premium:
                               $ref: '#/components/schemas/Amount'
-                            current_premium__and_government_subsidies:
+                            current_premium_and_government_subsidies:
                               $ref: '#/components/schemas/Amount'
-                            without_further_premium__and_government_subsidies:
+                            without_further_premium_and_government_subsidies:
                               $ref: '#/components/schemas/Amount'
                         pension_bereaved_duration_guarateed:
                           $ref: '#/components/schemas/Date'
@@ -327,13 +327,13 @@ components:
                               $ref: '#/components/schemas/Amount'
                         amount_pension_assuming_fund_performance:
                               $ref: '#/components/schemas/Amount'
-                        amount_capital_goverment_subsidies_included_current:
+                        amount_capital_government_subsidies_included_current:
                           $ref: '#/components/schemas/Amount'
-                        goverment_subsidies_in_extrapolation_included:
+                        government_subsidies_in_extrapolation_included:
                           type: boolean
-                        full_utilizaiton_goverment_subsidies:
+                        full_utilization_government_subsidies:
                           type: boolean
-                        indirectly_eligible_goverment_subsidies:
+                        indirectly_eligible_government_subsidies:
                           type: boolean
                         amount_government_subsidies_annual:
                           $ref: '#/components/schemas/Amount'

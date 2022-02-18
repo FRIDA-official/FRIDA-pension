@@ -1,4 +1,3 @@
-## Security
 ### Data in Transit
 Bei der Übertragung von Informationen über Kommunikationsnetze besteht die Gefahr, dass Informationen unbefugt abgehört oder unbefugt manipuliert werden. Um die Vertraulichkeit und die Integrität der Informationen sicherzustellen, müssen entsprechende Maßnahmen zur Absicherung der Übertragung ergriffen werden.
 FRIDA nutzt hierbei die Empfehlungen und den Mindeststandard gemäß dem Bundesamt für Informationssicherheit (BSI), wie hier definiert: https://www.bsi.bund.de/SharedDocs/Downloads/EN/BSI/Publications/CloudComputing/SecurityRecommendationsCloudComputingProviders.pdf und https://www.bsi.bund.de/DE/Themen/Oeffentliche-Verwaltung/Mindeststandards/TLS-Protokoll/TLS-Protokoll_node.html

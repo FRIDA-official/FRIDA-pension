@@ -11,7 +11,7 @@ info:
     url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
 externalDocs:
   description: External documentation
-  url: 'https://frida-official.github.io/FRIDA-pension/docs/FRIDA_PensionInformation_OA3_en.html'
+  url: 'http://swagger.io'
 paths:
   /ContractDetails:
     post:

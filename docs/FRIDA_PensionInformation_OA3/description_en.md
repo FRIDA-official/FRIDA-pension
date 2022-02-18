@@ -47,7 +47,7 @@ In order to be able to guarantee complete end-to-end encryption, measures to sec
 He can also access the pension cockpit of the DRI which then sends a request with a token to the customer portal. 
 If this process succeed the visible contracts get returned to the customer. </p> <br>
 <p>The customer also has the option to calculate a selected contract which he can send to the DRI. The DRI then asks for the master data of the 
-selected contract from the customer portal with the method "ContractDetails(contract_id, token)" the request contains the selected
+selected contract from the customer portal with the method ```ContractDetails(contract_id, token)``` the request contains the selected
 contract and a token, if this process succeeds the DRI recieves the master data and uses that data to calculate the pension amout, which then
 gets returned to the customer.</p>
   

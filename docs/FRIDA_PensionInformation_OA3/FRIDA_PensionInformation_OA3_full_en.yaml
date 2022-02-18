@@ -6,6 +6,9 @@ info:
   contact:
     email: anton.rott@accenture.com
   version: '1.1'
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
 externalDocs:
   description: External documentation
   url: 'https://frida-official.github.io/FRIDA-pension/docs/FRIDA_PensionInformation_OA3_en.html'

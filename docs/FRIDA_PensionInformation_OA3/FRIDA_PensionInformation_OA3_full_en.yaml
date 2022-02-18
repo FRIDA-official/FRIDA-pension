@@ -359,7 +359,7 @@ components:
                         amount_capital_coverage_death:
                           $ref: '#/components/schemas/Amount'
   securitySchemes:
-    oAuth2:
+    oAuth2: 
       type: oauth2
       flows:
         implicit:

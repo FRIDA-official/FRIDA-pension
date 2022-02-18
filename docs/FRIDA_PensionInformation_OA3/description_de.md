@@ -11,7 +11,9 @@ Die DRI-Plattform fragt dann die Verträge über die Kundenplattform ab. Darübe
 ## Security
 ### Data in Transit
 Bei der Übertragung von Informationen über Kommunikationsnetze besteht die Gefahr, dass Informationen unbefugt abgehört oder unbefugt manipuliert werden. Um die Vertraulichkeit und die Integrität der Informationen sicherzustellen, müssen entsprechende Maßnahmen zur Absicherung der Übertragung ergriffen werden.
-FRIDA nutzt hierbei die Empfehlungen und den Mindeststandard gemäß dem Bundesamt für Informationssicherheit (BSI), wie hier definiert: https://www.bsi.bund.de/SharedDocs/Downloads/EN/BSI/Publications/CloudComputing/SecurityRecommendationsCloudComputingProviders.pdf und https://www.bsi.bund.de/DE/Themen/Oeffentliche-Verwaltung/Mindeststandards/TLS-Protokoll/TLS-Protokoll_node.html
+FRIDA nutzt hierbei die Empfehlungen und den Mindeststandard gemäß dem Bundesamt für Informationssicherheit (BSI), wie hier definiert: <br>
+https://www.bsi.bund.de/SharedDocs/Downloads/EN/BSI/Publications/CloudComputing/SecurityRecommendationsCloudComputingProviders.pdf <br>
+https://www.bsi.bund.de/DE/Themen/Oeffentliche-Verwaltung/Mindeststandards/TLS-Protokoll/TLS-Protokoll_node.html
 
 Entsprechend gelten folgende Mindeststandards für die Kommunikation: 
 * TLS > 1.2 in Kombination mit Perfect Forward Secrecy (PFS) 
@@ -30,7 +32,8 @@ Bei Data at Rest müssen Daten nach folgenden Kriterien sicher gespeichert und v
 * Datensicherung
 * Löschen und Vernichten
 
-Hierbei können die Richtlinien vom BSI eingsetzt werden: https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/IT-Grundschutz-Kompendium/IT-Grundschutz-Bausteine/Bausteine_Download_Edition_node.html
+Hierbei können die Richtlinien vom BSI eingsetzt werden: <br>
+https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/IT-Grundschutz-Kompendium/IT-Grundschutz-Bausteine/Bausteine_Download_Edition_node.html
 
 Um eine vollständige End-to-End Verschlüsselung gewährleisten zu können, müssen Maßnahmen zur Sicherung der Daten auch beim Anbieter der Daten (z.B. Versicherung) und des Dienstes sichergestellt werden. Dazu gehört sowohl eine sichere Speicherung der Daten, als auch die Nutzung von Verschlüsselung innerhalb des internen Netzwerks. Die Sicherstellung dieser Richtlinien ist nicht Teil der Spezifikation von FRIDA. 
 
@@ -41,7 +44,7 @@ Um eine vollständige End-to-End Verschlüsselung gewährleisten zu können, mü
 Dazu kann er auf das Rentencockpit der BBS zugreifen, die dann eine Anfrage mit einem Token an das Kundenportal sendet. 
 Ist dieser Vorgang erfolgreich, werden die sichtbaren Verträge an den Kunden zurückgegeben. </p> <br>
 <p>Der Kunde hat auch die Möglichkeit, einen ausgewählten Vertrag zu berechnen, den er an die DRI senden kann. Die BBS fragt dann die Stammdaten des 
-ausgewählten Vertrages aus dem Kundenportal mit der Methode ```ContractDetails(contract_id, token)``` die Anfrage enthält den ausgewählten
+ausgewählten Vertrages aus dem Kundenportal mit der Methode ``ContractDetails(contract_id, token)`` die Anfrage enthält den ausgewählten
 Die Anfrage enthält den ausgewählten Vertrag und ein Token, bei Erfolg erhält die DRI die Stammdaten und berechnet daraus die Rentenhöhe, die dann an den Kunden zurückgegeben wird.
 an den Kunden zurückgegeben wird.</p>
   

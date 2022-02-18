@@ -11,7 +11,9 @@ The DRI platform then queries the contracts via the customer platform. In additi
 ## Security
 ### Data in Transit
 When information is transmitted via communications networks, there is a risk of unauthorized interception or unauthorized manipulation of information. To ensure the confidentiality and integrity of the information, appropriate measures must be taken to secure the transmission.
-FRIDA uses the recommendations and the minimum standard according to the German Federal Office for Information Security (BSI), as defined here: https://www.bsi.bund.de/SharedDocs/Downloads/EN/BSI/Publications/CloudComputing/SecurityRecommendationsCloudComputingProviders.pdf and https://www.bsi.bund.de/DE/Themen/Oeffentliche-Verwaltung/Mindeststandards/TLS-Protokoll/TLS-Protokoll_node.html
+FRIDA uses the recommendations and the minimum standard according to the German Federal Office for Information Security (BSI), as defined here: <br>
+https://www.bsi.bund.de/SharedDocs/Downloads/EN/BSI/Publications/CloudComputing/SecurityRecommendationsCloudComputingProviders.pdf <br>
+https://www.bsi.bund.de/DE/Themen/Oeffentliche-Verwaltung/Mindeststandards/TLS-Protokoll/TLS-Protokoll_node.html
 
 Accordingly, the following minimum standards apply to communication: 
 * TLS > 1.2 in combination with Perfect Forward Secrecy (PFS). 
@@ -30,7 +32,8 @@ At Data at Rest, data must be securely stored and processed according to the fol
 * Data backup
 * Deletion and destruction
 
-Here the guidelines of the BSI can be used: https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/IT-Grundschutz-Kompendium/IT-Grundschutz-Bausteine/Bausteine_Download_Edition_node.html
+Here the guidelines of the BSI can be used: <br>
+https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/IT-Grundschutz-Kompendium/IT-Grundschutz-Bausteine/Bausteine_Download_Edition_node.html
 
 ## Query Contracts
 <img style="width:100%; height: auto;" src="FRIDA_PensionInformation_OA3/resources/Query_contracts.png">  
@@ -38,7 +41,7 @@ Here the guidelines of the BSI can be used: https://www.bsi.bund.de/DE/Themen/Un
 He can also access the pension cockpit of the DRI which then sends a request with a token to the customer portal. 
 If this process succeed the visible contracts get returned to the customer. </p> <br>
 <p>The customer also has the option to calculate a selected contract which he can send to the DRI. The DRI then asks for the master data of the 
-selected contract from the customer portal with the method ```ContractDetails(contract_id, token)``` the request contains the selected
+selected contract from the customer portal with the method ``ContractDetails(contract_id, token)`` the request contains the selected
 contract and a token, if this process succeeds the DRI recieves the master data and uses that data to calculate the pension amout, which then
 gets returned to the customer.</p>
   

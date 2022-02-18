@@ -13,33 +13,6 @@ externalDocs:
   description: External documentation
   url: 'http://swagger.io'
 paths:
-  /ContractDetails:
-    post:
-      summary: Query the details for a specific contract
-      security:
-        - oAuth2:
-          - ContractDetails
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ContractDetailsResponse'
-        '403':
-          description: Authorization error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorList'
-        '500':
-          description: Generic Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorList'
-      requestBody:
-        $ref: '#/components/requestBodies/ContractDetailsRequest'
   /Contracts:
     post:
         summary: Query all visible contracts defined in the user portal
@@ -67,6 +40,33 @@ paths:
                   $ref: '#/components/schemas/ErrorList'
         requestBody:
           $ref: '#/components/requestBodies/VisibleContractsRequest'
+  /ContractDetails:
+    post:
+      summary: Query the details for a specific contract
+      security:
+        - oAuth2:
+          - ContractDetails
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContractDetailsResponse'
+        '403':
+          description: Authorization error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorList'
+        '500':
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorList'
+      requestBody:
+        $ref: '#/components/requestBodies/ContractDetailsRequest'
 components:
   requestBodies:
     ContractDetailsRequest:

@@ -21,6 +21,9 @@ components:
   schemas:
     $ref: './docs/FRIDA_PensionInformation_OA3/FRIDA_PensionInformation_OA3_full_en.yaml#/components/schemas'
   securitySchemes:
+    security:
+      description:
+         $ref: './docs/FRIDA_PensionInformation_OA3/security_en.md'
     oAuth2:
       $ref: './docs/FRIDA_PensionInformation_OA3/FRIDA_PensionInformation_OA3_full_en.yaml#/components/securitySchemes/oAuth2'
       description:

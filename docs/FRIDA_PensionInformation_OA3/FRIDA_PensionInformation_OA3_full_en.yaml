@@ -2,7 +2,6 @@ openapi: 3.0.1
 info:
   title: FRIDA PensionSerivce
   description: This spec describes the pension service and its needed APIs
-  termsOfService: 'https://github.com/FRIDA-official'
   contact:
     email: anton.rott@accenture.com
   version: '1.1'
@@ -362,14 +361,14 @@ components:
       type: oauth2
       flows:
         implicit:
-          authorizationUrl: 'https://frida-demo.okta.com/oauth2/default/v1/authorize?nonce=kdkdkl'
+          authorizationUrl: 'https://login.freeinsurancedata.de/oauth2/default/v1/authorize?nonce=anything'
           scopes:
             Contracts: Read all visible contracts
             ContractDetails: Read contract details
             openid: OpenId subject
         authorizationCode:
-          authorizationUrl: 'https://frida-demo.okta.com/oauth2/default/v1/authorize?nonce=kdkdkl'
-          tokenUrl: 'https://frida-demo.okta.com/oauth2/default/v1/token?nonce=kdkdkl'
+          authorizationUrl: 'https://login.freeinsurancedata.de/oauth2/default/v1/authorize?nonce=anything'
+          tokenUrl: 'https://login.freeinsurancedata.de/oauth2/default/v1/token?nonce=anything'
           scopes:
             Contracts: Read all visible contracts
             ContractDetails: Read contract details

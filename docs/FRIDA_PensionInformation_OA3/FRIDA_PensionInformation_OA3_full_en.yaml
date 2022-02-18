@@ -11,6 +11,8 @@ info:
 externalDocs:
   description: External documentation
   url: 'http://swagger.io'
+servers:
+- url: 'https://example.com/v1'
 paths:
   /Contracts:
     post:

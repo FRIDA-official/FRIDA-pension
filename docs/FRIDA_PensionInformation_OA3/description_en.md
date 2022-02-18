@@ -35,6 +35,7 @@ At Data at Rest, data must be securely stored and processed according to the fol
 Here the guidelines of the BSI can be used: <br>
 https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/IT-Grundschutz-Kompendium/IT-Grundschutz-Bausteine/Bausteine_Download_Edition_node.html
 
+In order to be able to guarantee complete end-to-end encryption, measures to secure the data must also be ensured at the provider of the data (e.g. insurance) and the service. This includes both secure storage of the data, as well as the use of encryption within the internal network. Ensuring these guidelines is not part of the FRIDA specification. 
 ## Query Contracts
 <img style="width:100%; height: auto;" src="FRIDA_PensionInformation_OA3/resources/Query_contracts.png">  
 <p>Before starting any calculation the user has to decide which contracts he wants to make accessible to the DRI on the customer portal.

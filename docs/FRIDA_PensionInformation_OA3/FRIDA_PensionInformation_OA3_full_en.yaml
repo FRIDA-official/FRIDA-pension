@@ -3,7 +3,7 @@ info:
   title: FRIDA PensionSerivce
   description: This spec describes the pension service and its needed APIs
   contact:
-    email: anton.rott@accenture.com
+    email: jonas.knebel@gmx.de
   version: '1.1'
   license:
     name: Apache 2.0
@@ -181,12 +181,12 @@ components:
             type_of_insurance:
               type: string
               enum:
-                - Krankenversicherung
-                - Pflegeversicherung
-                - Gesetzliche Rentenversicherung
-                - Private Rentenversicherung
-                - Betriebliche Rentenversicherung
-                - Kapitallebensversicherung
+                - STATUTORY_HEALTH_INSURANCE
+                - CARE_INSURANCE
+                - STATUTORY_PENSION_INSURANCE
+                - PRIVATE_PENSION_INSURANCE
+                - COMPANY_PENSION
+                - ENDOWMENT_LIFE_INSURANCE
             date_notification_status:
               $ref: '#/components/schemas/Date'
             date_start_insurance_contract:
@@ -211,11 +211,11 @@ components:
                   premium_payment_method:
                     type: string
                     enum:
-                      - '1'
-                      - '4'
-                      - '6'
-                      - '12'
-                      - 'E'
+                      - ANNUALY_PAYMENT
+                      - QUARTALY_PAYMENT
+                      - SEMI_ANNUALY_PAYMENT
+                      - MONTHLY_PAYMENT
+                      - SINGLE_PAYMENT
                   premium_payment_amount:
                     $ref: '#/components/schemas/Amount'
                   premium_employer_payment_included_current:
@@ -228,9 +228,9 @@ components:
                       interval:
                         type: string
                         enum:
-                          - annual
-                          - biennial
-                          - triennial
+                          - ANNUAL
+                          - BIENNIAL
+                          - TRIENNIAL
                       rate:
                         $ref: '#/components/schemas/Factor'
                       last_assumptipon:
